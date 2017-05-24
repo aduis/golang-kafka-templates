@@ -29,6 +29,11 @@ localhost:~ me$ go get github.com/Shopify/sarama
 
 All [logs](https://golang.org/pkg/log/syslog/) are sent to [syslog](https://en.wikipedia.org/wiki/Syslog)
 
+```bash
+localhost:~ me$ tail -f /var/log/system.log | grep "serviceName"
+```
+
+
 Please do not fork the repository unless you are submitting a pull request to update the template. For your own usage please [mirror](https://help.github.com/articles/duplicating-a-repository/) the repo.
 
 ### Design Assumptions
