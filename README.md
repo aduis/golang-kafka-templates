@@ -16,16 +16,16 @@ It assumed that you have an understanding of [Apache Kafka](https://kafka.apache
 
 On macOS with [Homebrew](https://brew.sh/) installed the following starts a local copy of Kafka
 
-'''shell
+```bash
 localhost:~ me$ Brew install Kafka
 localhost:~ me$ zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties & kafka-server-start /usr/local/etc/kafka/server.properties
-'''
+```
 
 The code requires [Sarama](https://github.com/Shopify/sarama) an MIT-licensed Go client library for Apache Kafka. We utilize this library because it takes advantage of [consumer groups](http://kafka.apache.org/documentation.html#impl_zkconsumers) which ensures that for replicated consumers duplicated execution of published messages doesn't occur.
 
-'''shell
+```bash
 localhost:~ me$ go get github.com/Shopify/sarama
-'''
+```
 
 All [logs](https://golang.org/pkg/log/syslog/) are sent to [syslog](https://en.wikipedia.org/wiki/Syslog)
 
