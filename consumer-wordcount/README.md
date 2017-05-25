@@ -8,7 +8,7 @@ When running this example you will need to add messages onto the Topic. The easi
 to do this is by running the Kafka Console Producer in a independent terminal.
 
 ```bash
-kafka-console-producer --broker-list localhost:9092 --topic test
+localhost:~ me$ kafka-console-producer --broker-list localhost:9092 --topic test
 ```
 
 Simply type words into the consuls topic and watch them get counted.  

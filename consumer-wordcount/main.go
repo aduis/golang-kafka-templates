@@ -14,10 +14,10 @@ import (
 )
 
 // serviceName of the service being run. Appended to all logs.
-const serviceName = "consumer-min"
+const serviceName = "wordcounter"
 
 // topic is the Kafka topic to connect to for messags
-const topic = "test"
+const topic = "wordcount-topic"
 
 func main() {
 	// Get environment variables.

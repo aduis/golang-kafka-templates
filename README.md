@@ -6,11 +6,16 @@ A group of [GoLang](https://golang.org/) example templates for writing [Apache K
 Each template does not have any domain specific logic. The goal is that new developers can leverage the boiler plate code examples to add additional functionality to an application.
 
 ### Example Templates
-- [consumer-wordcount](./consumer-wordcount/) is a minimal implementation of a kafka consumer that provides:
+- [consumer-wordcount](./consumer-wordcount/) is a minimal implementation of a Kafka consumer that provides:
   - Graceful shutdown to avoid data loss and unexpected behavior
   - Configuration via environment variables
   - Syslog logging of information and issues
-  - Implements a word count logic for a basic accumulator of messages 
+  - Implements a word count logic for a basic accumulator of messages
+
+- [producer-wordcount-api](./producer-wordcount-api) is a minimal implementation of a Kafka producer for sending http post vars into a a Kafka topic.
+  - Graceful shutdown to avoid data loss and unexpected behavior
+  - Configuration via environment variables
+  - Syslog logging of information and issues
 
 ### Usage
 It assumed that you have an understanding of [Apache Kafka](https://kafka.apache.org/) and have a version of Kafka running that you can connect to for development. The Kafka [quickstart](https://kafka.apache.org/quickstart) tutorial can assist you in running a local copy.   
