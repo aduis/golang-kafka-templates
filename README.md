@@ -6,10 +6,11 @@ A group of [GoLang](https://golang.org/) example templates for writing [Apache K
 Each template does not have any domain specific logic. The goal is that new developers can leverage the boiler plate code examples to add additional functionality to an application.
 
 ### Example Templates
-- [consumer-minimal](./consumer-minimal/) is a minimal implementation of a kafka consumer that provides:
+- [consumer-wordcount](./consumer-wordcount/) is a minimal implementation of a kafka consumer that provides:
   - Graceful shutdown to avoid data loss and unexpected behavior
   - Configuration via environment variables
   - Syslog logging of information and issues
+  - Implements a word count logic for a basic accumulator of messages 
 
 ### Usage
 It assumed that you have an understanding of [Apache Kafka](https://kafka.apache.org/) and have a version of Kafka running that you can connect to for development. The Kafka [quickstart](https://kafka.apache.org/quickstart) tutorial can assist you in running a local copy.   
@@ -32,7 +33,6 @@ All [logs](https://golang.org/pkg/log/syslog/) are sent to [syslog](https://en.w
 ```bash
 localhost:~ me$ tail -f /var/log/system.log | grep "serviceName"
 ```
-
 
 Please do not fork the repository unless you are submitting a pull request to update the template. For your own usage please [mirror](https://help.github.com/articles/duplicating-a-repository/) the repo.
 
