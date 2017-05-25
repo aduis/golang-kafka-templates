@@ -5,6 +5,7 @@ import (
 	"log/syslog"
 	"os"
 	"os/signal"
+	"strconv"
 	"strings"
 	"sync"
 	"time"
@@ -27,7 +28,7 @@ func main() {
 	// offset -1 = OffsetNewest | -2 = OffsetOldest
 	var offset int64 = -2
 	if os.Getenv("offset") != "" {
-		// offset = strconv.Atoi(os.Getenv("offset"))
+		offset, _ = strconv.ParseInt(os.Getenv("offset"), 10, 64)
 	}
 
 	// create a syslog
@@ -81,7 +82,7 @@ func main() {
 	for {
 		select {
 		case <-signals:
-			logger.Warning("Interrupt is detected")
+			logger.Warning("Interrupt shutdown is detected")
 			consumer.Close()
 			ticker.Stop()
 			return
@@ -94,6 +95,7 @@ func main() {
 				}
 			}
 			w.Unlock()
+			logger.Warning("Word Count was calculated")
 		}
 	}
 }
@@ -105,7 +107,7 @@ func messageRecieved(message *sarama.ConsumerMessage, w *wordCountMap) {
 	// arbitray buisness logic
 	words := strings.Fields(string(message.Value))
 	for _, word := range words {
-		w.add(word, 1)
+		w.add(strings.ToLower(word), 1)
 	}
 }
 
