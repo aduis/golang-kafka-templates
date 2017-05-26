@@ -1,0 +1,24 @@
+
+graph LR
+POST/message --> API-Gateway
+API-Gateway --> producer-A
+API-Gateway --> producer-B
+subgraph Producer Service
+producer-A --> topic
+producer-B --> topic
+end
+subgraph Apache Kafka
+topic --> partition-0
+topic --> partition-1
+topic --> partition-2
+end
+subgraph Consumer Service
+partition-0 --> service-A
+partition-1 --> service-A
+partition-2 --> service-A
+partition-0 --> service-B
+partition-1 --> service-B
+partition-2 --> service-B
+service-A --> DB-A
+service-B --> DB-B
+end

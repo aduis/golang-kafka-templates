@@ -6,11 +6,15 @@ This consumer example connects to all Kafka partitions and listens for messages.
 
 The mental model that I use for this client is a fanout with each client receiving all broadcasted messages on the topic.
 
-```bash
-wordcount-topic
-|--> wordcounter-a
-|--> wordcounter-b
-```
+![fanout](images/fanout.svg?raw=true)
+
+<!--
+Image created with mermaid
+https://knsv.github.io/mermaid/#mermaid
+ source: ./image/fanout.txt
+-->
+
+
 Each consumer client will have received all of the messages sent to any of the partitions available for the topic.  
 
 I find this pattern useful for integrations. For example listening for a specific message and notify external systems such as email, SMS, slack, etc. Each of these integrations can work independently and receive all of the messages from the topic. If a services needs to be restarted it just needs to know the offset when it was shutdown. On restart it can process any messages missed while it was down. This is not a consumer client pattern for high availability or load balancing.
