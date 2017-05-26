@@ -6,7 +6,7 @@ This consumer example connects to all Kafka partitions and listens for messages.
 
 The mental model that I use for this client is a fanout with each client receiving all broadcasted messages on the topic.
 
-![fanout](images/fanout.svg?raw=true)
+![fanout](image/fanout.svg?raw=true)
 
 <!--
 Image created with mermaid
