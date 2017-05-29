@@ -12,13 +12,18 @@ Each template does not have any domain specific logic. In some cases wordcount i
   - Syslog logging of information and issues
   - Implements a word count logic for a basic accumulator of messages
 
+- [consumer-cluster-wordcount](./consumer-cluster-wordcount/) is a minimal implementation of a
+  - Kafka Consumer groups allowing for fault tolerance of consumer clients and load-balancing.
+  
 - [producer-wordcount-api](./producer-wordcount-api) is a minimal implementation of a Kafka producer for sending http post vars into a a Kafka topic.
   - Graceful shutdown to avoid data loss and unexpected behavior
   - Configuration via environment variables
   - Syslog logging of information and issues
 
 ### Usage
-It assumed that you have an understanding of [Apache Kafka](https://kafka.apache.org/) and have a version of Kafka running that you can connect to for development. The Kafka [quickstart](https://kafka.apache.org/quickstart) tutorial can assist you in running a local copy. All examples require Kafka v0.9+ to utilize Kafka based client tracking rather than zookeeper.    
+It assumed that you have an understanding of [Apache Kafka](https://kafka.apache.org/) and have a version of Kafka running that you can connect to for development. The Devoxx video [Introduction to Apache Kafka](https://www.youtube.com/watch?v=UEg40Te8pnE) by [James Ward](https://www.jamesward.com/) is a very concise way to get up to speed with terminology quickly.  
+
+The Kafka [quickstart](https://kafka.apache.org/quickstart) tutorial can assist you in running a local copy. All examples require Kafka v0.9+ to utilize Kafka based client tracking rather than zookeeper.    
 
 On macOS with [Homebrew](https://brew.sh/) installed the following starts a local copy of Kafka
 
@@ -33,24 +38,27 @@ The code requires [Sarama](https://github.com/Shopify/sarama) an MIT-licensed Go
 localhost:~ me$ go get github.com/Shopify/sarama
 ```
 
-Clustered consumer examples utilize [Sarama-Cluster](https://github.com/bsm/sarama-cluster) a cluster Sarama extension enabling users to consume topics across balanced nodes. It's important to read the [Client-side Assignment Proposal](https://cwiki.apache.org/confluence/display/KAFKA/Kafka+Client-side+Assignment+Proposal) to understand use cases for a clustered consumer. 
+Clustered consumer examples utilize [Sarama-Cluster](https://github.com/bsm/sarama-cluster) a cluster Sarama extension enabling users to consume topics across balanced nodes. It's important to read the [Client-side Assignment Proposal](https://cwiki.apache.org/confluence/display/KAFKA/Kafka+Client-side+Assignment+Proposal) to understand use cases for a clustered consumer.
 
 ```bash
 localhost:~ me$ go get github.com/bsm/sarama-cluster
 ```
 
 
-
-All [logs](https://golang.org/pkg/log/syslog/) are sent to [syslog](https://en.wikipedia.org/wiki/Syslog)
-
-```bash
-localhost:~ me$ tail -f /var/log/system.log | grep "serviceName"
-```
-
 Please do not fork the repository unless you are submitting a pull request to update the template. For your own usage please [mirror](https://help.github.com/articles/duplicating-a-repository/) the repo.
 
 ### Design Assumptions
+
+Service configuration should be done with functional options.
+- [Functional options for friendly APIs](https://dave.cheney.net/2014/10/17/functional-options-for-friendly-apis) a dotGo presentation by Dave Cheney. [Watch the presentation](https://www.youtube.com/watch?v=24lFtGHWxAQ)
+- [Self-referential functions and the design of options](https://commandcenter.blogspot.com.au/2014/01/self-referential-functions-and-design.html) by Rob Pike
+
 These templates follow [The Twelve Factors](https://12factor.net/) a popular and widely used methodology for building web applications.
+
+All [logs](https://golang.org/pkg/log/syslog/) are sent to [syslog](https://en.wikipedia.org/wiki/Syslog)
+```bash
+localhost:~ me$ tail -f /var/log/system.log | grep "serviceName"
+```
 
 
 ### Thank you
