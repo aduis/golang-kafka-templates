@@ -18,7 +18,7 @@ Consumer Groups are we handle scale out of partitions on the consumer.
 - Keeps only a node to process data within a consumer group.  
 
 
-![consumer-groups]https://cdn.rawgit.com/wadearnold/golang-kafka-templates/9671b7eb/consumer-cluster-wordcount/image/consumer-groups.svg)
+![consumer-groups](https://cdn.rawgit.com/wadearnold/golang-kafka-templates/9671b7eb/consumer-cluster-wordcount/image/consumer-groups.svg)
 <!--
 Image created with mermaid
 https://knsv.github.io/mermaid/#mermaid
