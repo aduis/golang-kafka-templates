@@ -1,0 +1,24 @@
+%% Consumer Groups
+graph TD
+subgraph Kafka Cluster
+subgraph Broker 1
+Partition-0
+Partition-3
+end
+subgraph Broker 2
+Partition-1
+Partition-2
+end
+end
+subgraph Consumer Group A
+Partition-0 --> C1
+Partition-3 --> C1
+Partition-1 --> C2
+Partition-2 --> C2
+end
+subgraph Consumer Group B
+Partition-0 --> C3
+Partition-3 --> C4
+Partition-1 --> C4
+Partition-2 --> C5
+end

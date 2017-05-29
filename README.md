@@ -14,7 +14,7 @@ Each template does not have any domain specific logic. In some cases wordcount i
 
 - [consumer-cluster-wordcount](./consumer-cluster-wordcount/) is a minimal implementation of a
   - Kafka Consumer groups allowing for fault tolerance of consumer clients and load-balancing.
-  
+
 - [producer-wordcount-api](./producer-wordcount-api) is a minimal implementation of a Kafka producer for sending http post vars into a a Kafka topic.
   - Graceful shutdown to avoid data loss and unexpected behavior
   - Configuration via environment variables
